@@ -3,32 +3,42 @@ package com.informatorio.laboratorio.interfaces;
 import com.informatorio.laboratorio.model.Experimento;
 import com.informatorio.laboratorio.model.Investigador;
 import java.util.List;
+import java.util.Scanner;
 
-/*
- * INTERFAZ DE SERVICIO DE EXPERIMENTOS
- * 
+/**
  * Contrato para el servicio de experimentos.
  */
-
 public interface IExperimentoService {
 
-    void registrarExperimentoQuimico(String nombre, int duracion, boolean exitoso,
-            String tipoReactivo, Investigador investigador);
+        // Métodos interactivos
+        void registrarExperimentoInteractivo(Scanner scanner, IInvestigadorService investigadorService);
 
-    void registrarExperimentoFisico(String nombre, int duracion, boolean exitoso,
-            String instrumentoUtilizado, List<Investigador> investigadores);
+        void listarExperimentosConMensajes();
 
-    List<Experimento> listarExperimentos();
+        void mostrarTotales();
 
-    int contarExperimentosExitosos();
+        void mostrarExperimentoDeMayorDuracion();
 
-    int contarExperimentosFallidos();
+        void generarReporteCompleto(IInvestigadorService investigadorService);
 
-    Experimento obtenerExperimentoDeMayorDuracion();
+        // Métodos de negocio
+        void registrarExperimentoQuimico(String nombre, int duracion, boolean exitoso,
+                        String tipoReactivo, Investigador investigador);
 
-    double calcularPromedioDuracion();
+        void registrarExperimentoFisico(String nombre, int duracion, boolean exitoso,
+                        String instrumentoUtilizado, List<Investigador> investigadores);
 
-    double calcularPorcentajeExito();
+        List<Experimento> listarExperimentos();
 
-    boolean existeExperimento();
+        int contarExperimentosExitosos();
+
+        int contarExperimentosFallidos();
+
+        Experimento obtenerExperimentoDeMayorDuracion();
+
+        double calcularPromedioDuracion();
+
+        double calcularPorcentajeExito();
+
+        boolean existeExperimento();
 }
